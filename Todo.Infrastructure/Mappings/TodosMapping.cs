@@ -8,7 +8,7 @@ namespace Todo.Infrastructure.Mappings
     {
         public void Configure(EntityTypeBuilder<TodoList> builder)
         {
-            builder.ToTable("users", "dbo");
+            builder.ToTable("todos", "dbo");
             builder.HasKey(e => e.Id);
 
             builder.Property(e => e.Id).HasColumnName("id").ValueGeneratedOnAdd();

@@ -31,6 +31,14 @@ namespace Todo.Infrastructure.Repositories
             return _databaseContext.Set<User>().AsQueryable().Where(e => e.Id == id).FirstOrDefault();
         }
 
+        public bool IsExistingName(string name)
+        {
+            return _databaseContext.Set<User>().AsQueryable()
+                .Where(e => e.Name.ToLower()  == name.ToLower())
+                .Select(e => e.Id)
+                .Any();
+        }
+
         public void Update(User entity)
         {
             _databaseContext.Update<User>(entity);
